@@ -1,6 +1,7 @@
 function ds = unpack_struct(s,dest)
-%ds=unpack_struct(s,[dest])
-% Unpacks the fields of s and
+%UNPACK_STRUCT unpacks the fields of s to workspace dest.
+% ds=unpack_struct(s,[dest])
+% Returns:
 %  1/ export to workspace when `dest` is absent. Return `s`.
 %  2/ append it to structure `dest`. Returns appended `dest`.
 

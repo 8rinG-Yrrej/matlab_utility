@@ -1,7 +1,8 @@
+function y = cap(x,arg2,arg3)
+%CAP a value between lower and upperbounds.
 % function y = cap(x,a,b)
 % y = max(a,min(b,x));
 % Cap with real and imaginary parts of a separately. Like taxi-cab.
-function y = cap(x,arg2,arg3)
 
 if nargin == 3
   a=arg2; b=arg3;

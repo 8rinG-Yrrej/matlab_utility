@@ -1,4 +1,5 @@
 % function logticks_ensure_dec(ax)
+%LOGTICKS_ENSURE_DEC ensures tick marks every decade on a log axis.
 % Matlab sometimes skip a decade or more in logarithmic axis.
 % This function ensures that no decade is skipped, in all of the
 % logscale axes.

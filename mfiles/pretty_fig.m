@@ -1,13 +1,13 @@
+function pretty_fig
 % make figure nice in general
-
-main();
-
-function main()
 
 if ismac
   sizes = [18 14];
 	lwmin = 3;
 elseif isunix
+  sizes = [14 12];
+	lwmin=2;
+else
   sizes = [14 12];
 	lwmin=2;
 end

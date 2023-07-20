@@ -1,7 +1,7 @@
+function s = range_dim(a,rng,d)
+%RANGE_DIM is array indexing at a given dimension for arrays of indefinite total dimension.
 % function s = range_dim(a,rng,d)
 % Return s = a(...,rng,...) where rng appears at the |d|th dimension of a
-
-function s = range_dim(a,rng,d)
 w = ndims(a);
 if d>w || d<1
   s=[];

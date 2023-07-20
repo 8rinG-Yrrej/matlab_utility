@@ -1,10 +1,10 @@
 function [pool,nreq] = start_pool_env(maxcpu)
-
+%START_POOL_ENV read from environment and set parallel pool cpu number. Useful for cluster jobs.
 if nargin < 1
   maxcpu = inf;
 end
 
-nev = getenv('MATLAB_NCPU');
+nev = getenv_ncpu;
 
 if isempty(nev)
   nev=inf;

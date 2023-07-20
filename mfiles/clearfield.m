@@ -1,5 +1,5 @@
 function ss = clearfield(S,nms)
-
+%CLEARFIELD(S,f) removes a field f in a structure S, if it exists.
 tf=isfield(S,nms);
 ss=S;
 

@@ -1,5 +1,5 @@
 % [lb,rb,sv] = interpshift(n,v)
-% Linearly interpolated shift of vector v by n, n may be noninteger.
+%INTERPSHIFT makes linearly interpolated shift of vector v by n, n may be noninteger.
 % Returns shifted vector sv, and corresponding left (lb) & right (rb) index into v.
 % If abs(n)>length(v), returns [0,0,[]].
 % Also takes higher dimensional arrys. Operate on the 1st dimension.
