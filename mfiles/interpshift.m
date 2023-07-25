@@ -1,9 +1,14 @@
-% [lb,rb,sv] = interpshift(n,v)
+function [lb,rb,sv] = interpshift(v,n)
 %INTERPSHIFT makes linearly interpolated shift of vector v by n, n may be noninteger.
+% [sv] = interpshift(v,n)
+% Example: interpshift([1 2 3],0.1) == [0 1.9 2.9]
+%  This is consistent with circshift(f,a), which make f(x) to f(x-a). First
+%  entry of the output is zero due to unavailable data.
+% ARCANE usage:
+% [lb,rb,sv] = interpshift(v,n)
 % Returns shifted vector sv, and corresponding left (lb) & right (rb) index into v.
 % If abs(n)>length(v), returns [0,0,[]].
-% Also takes higher dimensional arrys. Operate on the 1st dimension.
-function [lb,rb,sv] = interpshift(n,v)
+% Also takes some higher dimensional arrys. Operate on the 1st dimension only.
 
 
 vq=isvector(v);
@@ -65,4 +70,12 @@ else
     sz = size(v);
     sv = reshape(sv,[size(sv,1) sz(2:end)]);
   end
+end
+
+if nargout==1
+  oo=zeros(size(v));
+  oo(lb:rb,:)=sv;
+  lb=oo;
+end
+
 end
