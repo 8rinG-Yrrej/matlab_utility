@@ -38,6 +38,9 @@ else
       sv = (1-cn+n)*v(llsb:llsb+rgm) ... %lesser
         + (cn-n)*v(llsb+1:llsb+1+rgm); %greater
     end
+  
+  % following is a bunch of specialized cases for array dimensions 2..4 to make things faster
+  % ``think java''
   elseif ismatrix(v)
     if cn-n == 0
       sv = v(llsb:llsb+rgm,:);
