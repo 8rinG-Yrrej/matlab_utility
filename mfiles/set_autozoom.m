@@ -21,6 +21,8 @@ for ii=ah(:).'
   axis(ii,[xl xr -inf inf]);
 end
 
+xrng = [xl xr];
+
 end
 
 

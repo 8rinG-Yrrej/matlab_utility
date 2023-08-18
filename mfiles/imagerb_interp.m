@@ -28,13 +28,13 @@ else
 end
 
 tointerp=false;
-if ~isUniform(x) || xylim(1)~=min(x) || xylim(2)~=max(x)
+if ~isuniform(x) || xylim(1)~=min(x) || xylim(2)~=max(x)
   nx=linspace(xylim(1),xylim(2),nn);
   tointerp=true;
 else
   nx=x;
 end
-if ~isUniform(y) || xylim(3)~=min(y) || xylim(4)~=max(y)
+if ~isuniform(y) || xylim(3)~=min(y) || xylim(4)~=max(y)
   ny=linspace(xylim(3),xylim(4),nn)';
   tointerp=true;
 else
