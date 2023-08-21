@@ -77,7 +77,12 @@ end
 
 if nargout==1
   oo=zeros(size(v));
-  oo(lb:rb,:)=sv;
+  if isvector(v)
+    oo(lb:rb)=sv;
+  else
+    so=size(sv);
+    oo(lb:rb,:)=reshape(sv,[so(1) prod(so(2:end))]);
+  end
   lb=oo;
 end
 
