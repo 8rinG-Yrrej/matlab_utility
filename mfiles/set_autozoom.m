@@ -21,7 +21,9 @@ for ii=ah(:).'
   axis(ii,[xl xr -inf inf]);
 end
 
-xrng = [xl xr];
+if nargout>0
+  xrng = [xl xr];
+end
 
 end
 
