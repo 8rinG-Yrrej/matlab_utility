@@ -1,24 +1,50 @@
-% function v = fftconv(x,y,kind)
+% function v = fftconv(x1,x2,...,xn,kind='full')
 % Compute 1D convolution with fft. kind = 'same'|'valid'|'full'.
 % For matrix inputs, compute along the 1st dimension.
 % The default is 'full'.
 % For vectors, this is equivalent to cconv with patched-up options.
-function v = fftconv(x,y,kind)
+% When there are n>2 terms, compute the convolution between each pair.
+% These can be much slower that fftconv pairwise or folding fftconv.
+function v = fftconv(x,y,varargin)
 % arguments
 %     x
 %     y
 %     kind (1,1) string = 'full'
 % end
 
+if nargin > 2 
+  if ischar(varargin{end}) || isstring(varargin{end})
+    kind = varargin{end};
+    varargin(end)=[];
+  else
+    kind='full';
+  end
+  
+  lv=length(varargin);
+else
+  lv=0;
+end
+
 if isvector(x) && isvector(y)
   l = length(x);
   m = length(y);
+  if 0~=lv
+    m=m+sum(cellfun(@length,varargin))-lv;
+  end
 else
   l = size(x,1);
   m = size(y,1);
+  if 0~=lv
+    m=m+sum(cellfun(@(x)size(x,1),varargin))-lv;
+  end
 end
 
-v = ifft(fft(x,l+m-1).*fft(y,l+m-1));
+lt=l+m-1;
+if 0==lv
+  v = ifft(fft(x,lt).*fft(y,lt));
+else
+  v = ifft(fft(x,lt).*fft(y,lt).*fold(@(x,y) times(x,fft(y,lt)), varargin(2:end), fft(varargin{1},lt)));
+end
 
 if nargin == 2 || strcmp(kind,'full')
   return
