@@ -6,9 +6,17 @@
 % end
 % end
 function x = gA(y)
-if exist('canUseGPU') && canUseGPU
-  x = gpuArray(y);
-elseif 0 < gpuDeviceCount
+persistent hascpu
+if isempty(hascpu)
+  if exist('canUseGPU') && canUseGPU
+    hascpu=true;
+  elseif 0 < gpuDeviceCount
+    hascpu=true;
+  else
+    hascpu=false;
+  end
+end
+if hascpu
   x = gpuArray(y);
 else
   x=y;
