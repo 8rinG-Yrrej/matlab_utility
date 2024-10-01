@@ -43,7 +43,7 @@ lt=l+m-1;
 if 0==lv
   v = ifft(fft(x,lt).*fft(y,lt));
 else
-  v = ifft(fft(x,lt).*fft(y,lt).*fold(@(x,y) times(x,fft(y,lt)), varargin(2:end), fft(varargin{1},lt)));
+  v = ifft(fft(x,lt).*fft(y,lt).* cumprod(cell2mat(cellfun(@(a)fft(a,lt),varargin,'uniformoutput',false)),2));
 end
 
 if nargin == 2 || strcmp(kind,'full')
