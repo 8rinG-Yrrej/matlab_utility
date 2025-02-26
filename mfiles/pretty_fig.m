@@ -3,7 +3,7 @@ function pretty_fig
 
 if ismac
   sizes = [18 14];
-	lwmin = 3;
+	lwmin = 2;
 elseif isunix
   sizes = [14 12];
 	lwmin=2;
